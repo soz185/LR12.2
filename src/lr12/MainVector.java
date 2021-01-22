@@ -4,8 +4,8 @@ import java.lang.Math.*;
 import java.util.Scanner;
 import java.io.*;
 
-import lr11.Radius;
-import lr11.Vector;
+import lr12.Radius;
+import lr12.Vector;
 
 public class MainVector {
 	public static void main(String[] args) {
@@ -15,9 +15,9 @@ public class MainVector {
 		int length_str = str.length();
 		System.out.println(str);
 		System.out.printf("Длина строки %d\n", length_str);
-		Radius rad = new Radius(1.5);
+		//Radius rad = new Radius(1.5);
 		Vector a = new Vector();
-		Vector b = new Vector(1, 0, -2, rad);
+		Vector b = new Vector(1, 0, -2);
 		Vector c = new Vector();
 		System.out.printf("Количество созданных векторов: %d\n", Vector.GetCountOfVector());
         int p = 0;
@@ -37,18 +37,28 @@ public class MainVector {
         }
 		System.out.println("Цилиндры:");
 		System.out.print("a ");
-		a.display();
+		System.out.println(a.ToString());
 		System.out.println("");
 		System.out.print("b ");
-		b.display();
+		System.out.println(b.ToString());
+		System.out.println("");
+		
+        b = (Vector)a.clone();
+        a.add(b);
+        System.out.println("Цилиндры:");
+		System.out.print("a ");
+		System.out.println(a.ToString());
+		System.out.println("");
+		System.out.print("b ");
+		System.out.println(b.ToString());
 		System.out.println("");
 		
 		System.out.println("Сложение цилиндров a и b:");
 		c = a.add(b);
 		System.out.print("c ");
-		c.display();
+		System.out.println(c.ToString());
 		System.out.printf("\nДлина вектора a равна %g\n", a.length());
-		System.out.printf("Объем цилиндра a равен %g\n", a.cylinderVolume());
+		//System.out.printf("Объем цилиндра a равен %g\n", a.Volume());
 		System.out.printf("Скалярное произведение векторов a и b равно %g\n", a.scalar(b));
 		
         System.out.println("Работа с массивом объектов.");
@@ -74,18 +84,18 @@ public class MainVector {
         
         System.out.println("Цилиндры:");
         System.out.print("arr[0] ");
-        arr[0].display();
+        System.out.println(arr[0].ToString());
         System.out.println();
         System.out.print("arr[1] ");
-        arr[1].display();
+        System.out.println(arr[1].ToString());
         System.out.println("");
 
         System.out.println("Сложение цилиндров arr[0] и arr[1]: ");
         arr[2] = arr[0].add(arr[1]);
         System.out.print("arr[2] ");
-        arr[2].display();
+        System.out.println(arr[2].ToString());
         System.out.println("\nДлина вектора arr[0] равна " + arr[0].length());
-        System.out.println("Объем цилиндра arr[0] равен " + arr[0].cylinderVolume());
+        //System.out.println("Объем цилиндра arr[0] равен " + arr[0].Volume());
         System.out.println("Скалярное произведение векторов arr[0] и arr[1] равно " + arr[0].scalar(arr[1]));
 
         Vector [][] arrayVector = new Vector[2][2];
@@ -93,10 +103,17 @@ public class MainVector {
         	for (int j = 0; j < 2; j++)
         		{
         			arrayVector[i][j] = new Vector(i + j);
-        			arrayVector[i][j].display();
+        			System.out.println(arrayVector[i][j].ToString());
         			System.out.println();
         		}
-        		
+        Circle circle = new Circle();
+        Square square = new Square();
+        circle.ReturnName();
+        square.ReturnName();
+
+        Sphere sphere = new Sphere();
+        System.out.println(sphere.Volume());
+	
         
 		}
 		catch(Exception e)
